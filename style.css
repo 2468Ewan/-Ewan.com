@@ -1,0 +1,674 @@
+/* =========================================
+   EwanMusical.app
+   Fond Gumball 🎧
+   ========================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    color: white;
+
+    /* 🟦 IMAGE GUMBALL */
+    background-image:
+        linear-gradient(
+            rgba(4, 12, 35, 0.48),
+            rgba(25, 8, 55, 0.65)
+        ),
+        url("gumball.png");
+
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+
+    background-repeat: no-repeat;
+
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   HEADER
+   ========================================= */
+
+header {
+    text-align: center;
+    padding: 35px 15px 20px;
+}
+
+header h1 {
+    font-size: clamp(35px, 8vw, 60px);
+    font-weight: 900;
+
+    text-shadow:
+        0 4px 15px rgba(0, 0, 0, .8);
+
+    margin-bottom: 8px;
+}
+
+header p {
+    font-size: clamp(18px, 4vw, 25px);
+
+    color: #d5e4ff;
+
+    text-shadow:
+        0 2px 8px black;
+}
+
+
+/* =========================================
+   LOGO 🎧
+   ========================================= */
+
+header::before {
+    content: "🎧";
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 90px;
+    height: 90px;
+
+    margin: 0 auto 18px;
+
+    font-size: 52px;
+
+    border-radius: 25px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #00c6ff,
+            #693cff
+        );
+
+    box-shadow:
+        0 0 20px #00c6ff,
+        0 0 45px rgba(105, 60, 255, .8);
+}
+
+
+/* =========================================
+   BOUTON AJOUTER MUSIQUES
+   ========================================= */
+
+#localMusicButton {
+    background: white !important;
+
+    color: #101020 !important;
+
+    border: none !important;
+
+    border-radius: 30px !important;
+
+    padding: 14px 25px !important;
+
+    font-size: 17px !important;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 5px 20px rgba(0,0,0,.35);
+
+    transition: .25s;
+}
+
+#localMusicButton:hover {
+    transform: scale(1.05);
+
+    box-shadow:
+        0 0 25px #00c6ff;
+}
+
+
+/* =========================================
+   RECHERCHE
+   ========================================= */
+
+.searchBox {
+    width: 92%;
+    max-width: 720px;
+
+    margin: 45px auto 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    padding: 6px 7px;
+
+    border-radius: 45px;
+
+    background:
+        rgba(3, 15, 50, .86);
+
+    border: 2px solid #00c8ff;
+
+    box-shadow:
+        0 0 15px rgba(0, 200, 255, .8),
+        0 0 35px rgba(0, 120, 255, .3);
+
+    backdrop-filter: blur(10px);
+}
+
+.searchIcon {
+    margin-left: 15px;
+
+    font-size: 35px;
+
+    color: #00c8ff;
+}
+
+.searchBox input {
+    flex: 1;
+
+    min-width: 0;
+
+    padding: 15px;
+
+    border: none;
+
+    outline: none;
+
+    background: transparent;
+
+    color: white;
+
+    font-size: 21px;
+}
+
+.searchBox input::placeholder {
+    color: #b6c8e8;
+}
+
+
+/* =========================================
+   BOUTON RECHERCHE
+   ========================================= */
+
+.searchButton {
+    width: 62px;
+    height: 62px;
+
+    flex-shrink: 0;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #00c6ff,
+            #683cff
+        );
+
+    color: white;
+
+    font-size: 28px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 20px #00c6ff;
+
+    transition: .2s;
+}
+
+.searchButton:hover {
+    transform: scale(1.08);
+}
+
+
+/* =========================================
+   X
+   ========================================= */
+
+.clearButton {
+    background: transparent;
+
+    border: none;
+
+    color: #a9b9d8;
+
+    font-size: 30px;
+
+    cursor: pointer;
+
+    padding: 5px;
+}
+
+
+/* =========================================
+   BOUTONS RAPIDES
+   ========================================= */
+
+.suggestions {
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+    margin: 20px auto;
+
+    width: 95%;
+}
+
+.suggestions button {
+    padding: 12px 24px;
+
+    border-radius: 30px;
+
+    border: 1px solid rgba(0, 190, 255, .5);
+
+    background:
+        rgba(15, 35, 80, .78);
+
+    color: white;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    backdrop-filter: blur(8px);
+
+    transition: .2s;
+}
+
+.suggestions button:hover {
+    border-color: #00c8ff;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 0 15px rgba(0, 200, 255, .6);
+}
+
+
+/* =========================================
+   MESSAGE
+   ========================================= */
+
+#status {
+    width: 92%;
+    max-width: 850px;
+
+    margin: 30px auto;
+
+    text-align: center;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    text-shadow:
+        0 2px 8px black;
+}
+
+
+/* =========================================
+   ARTISTE
+   ========================================= */
+
+.artistBox {
+    width: 92%;
+    max-width: 850px;
+
+    margin: 25px auto;
+
+    padding: 28px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 22px;
+
+    border-radius: 30px;
+
+    background:
+        linear-gradient(
+            120deg,
+            rgba(3, 27, 75, .92),
+            rgba(60, 15, 100, .90)
+        );
+
+    border: 1px solid #008cff;
+
+    box-shadow:
+        0 0 25px rgba(0, 170, 255, .3);
+
+    backdrop-filter: blur(12px);
+}
+
+.artistIcon {
+    font-size: 55px;
+
+    flex-shrink: 0;
+}
+
+.artistBox h2 {
+    font-size: 34px;
+
+    margin-bottom: 8px;
+}
+
+.artistBox p {
+    color: #c3d3f0;
+
+    font-size: 19px;
+}
+
+.artistBox small {
+    display: block;
+
+    margin-top: 12px;
+
+    color: #aebedf;
+}
+
+
+/* =========================================
+   LISTE DES CHANSONS
+   ========================================= */
+
+#results {
+    width: 92%;
+    max-width: 850px;
+
+    margin: 25px auto 50px;
+}
+
+.card {
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    padding: 17px;
+
+    margin: 14px 0;
+
+    border-radius: 24px;
+
+    background:
+        rgba(3, 15, 48, .86);
+
+    border: 1px solid rgba(0, 180, 255, .35);
+
+    box-shadow:
+        0 7px 20px rgba(0,0,0,.25);
+
+    backdrop-filter: blur(10px);
+
+    transition: .2s;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+
+    border-color: #00c8ff;
+
+    box-shadow:
+        0 0 20px rgba(0,200,255,.35);
+}
+
+
+/* =========================================
+   POCHETTE
+   ========================================= */
+
+.cover {
+    width: 62px;
+    height: 62px;
+
+    min-width: 62px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 17px;
+
+    font-size: 31px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #12369b,
+            #6825a8
+        );
+
+    border: 1px solid #008cff;
+
+    box-shadow:
+        0 0 12px rgba(0,140,255,.3);
+}
+
+
+/* =========================================
+   INFORMATIONS CHANSON
+   ========================================= */
+
+.info {
+    flex: 1;
+
+    min-width: 0;
+}
+
+.info h3 {
+    font-size: 21px;
+
+    margin-bottom: 5px;
+
+    word-break: break-word;
+}
+
+.info p {
+    color: #aebfdf;
+
+    font-size: 16px;
+
+    margin-bottom: 5px;
+}
+
+.info span {
+    color: #d0dcf3;
+
+    font-size: 15px;
+}
+
+
+/* =========================================
+   YOUTUBE
+   ========================================= */
+
+.listenButton {
+    padding: 10px 16px !important;
+
+    border-radius: 15px !important;
+
+    border: 1px solid #00bfff !important;
+
+    background:
+        linear-gradient(
+            135deg,
+            #101a9b,
+            #6421ae
+        ) !important;
+
+    color: white !important;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: .2s;
+}
+
+.listenButton:hover {
+    transform: scale(1.04);
+
+    box-shadow:
+        0 0 15px #00bfff;
+}
+
+
+/* =========================================
+   CHARGER PLUS
+   ========================================= */
+
+#moreButton {
+    margin: 25px auto 50px;
+
+    padding: 14px 28px;
+
+    border-radius: 30px;
+
+    border: 2px solid #00bfff;
+
+    background:
+        rgba(5, 25, 70, .9);
+
+    color: white;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 15px rgba(0,190,255,.3);
+}
+
+#moreButton:hover {
+    box-shadow:
+        0 0 25px #00bfff;
+}
+
+
+/* =========================================
+   MOBILE 📱
+   ========================================= */
+
+@media (max-width: 600px) {
+
+    body {
+        background-attachment: scroll;
+
+        background-position: center;
+    }
+
+    header {
+        padding-top: 25px;
+    }
+
+    header::before {
+        width: 75px;
+        height: 75px;
+
+        font-size: 42px;
+    }
+
+    header h1 {
+        font-size: 35px;
+    }
+
+    header p {
+        font-size: 18px;
+    }
+
+    .searchBox {
+        margin-top: 30px;
+    }
+
+    .searchBox input {
+        font-size: 18px;
+
+        padding: 13px 8px;
+    }
+
+    .searchIcon {
+        margin-left: 8px;
+
+        font-size: 28px;
+    }
+
+    .searchButton {
+        width: 55px;
+        height: 55px;
+
+        font-size: 24px;
+    }
+
+    .artistBox {
+        padding: 22px;
+
+        border-radius: 25px;
+    }
+
+    .artistIcon {
+        font-size: 43px;
+    }
+
+    .artistBox h2 {
+        font-size: 26px;
+    }
+
+    .artistBox p {
+        font-size: 17px;
+    }
+
+    .card {
+        gap: 12px;
+
+        padding: 14px;
+
+        border-radius: 20px;
+    }
+
+    .cover {
+        width: 52px;
+        height: 52px;
+
+        min-width: 52px;
+
+        font-size: 25px;
+    }
+
+    .info h3 {
+        font-size: 18px;
+    }
+
+    .info p {
+        font-size: 14px;
+    }
+
+    .listenButton {
+        width: 100%;
+
+        margin-top: 10px;
+    }
+}
